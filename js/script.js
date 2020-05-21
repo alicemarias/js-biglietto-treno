@@ -23,6 +23,8 @@ buttonGenera.addEventListener('click',
 
     //  compilo elementi ticket
     ticketNome.innerHTML = formNome.value;
+    ticketCosto.innerHTML = prezzo + '£';
+    ticketOfferta.innerHTML = offerta;
     // calcolo prezzo
     var prezzo = formKmValue * 0.21;
 
@@ -32,8 +34,6 @@ buttonGenera.addEventListener('click',
     }  else if (formEtaValue == 'over') {
       prezzo = prezzo - ( prezzo * 40 / 100);
     }
-    // calcolo prezzo BIGLIETTO
-    ticketCosto.innerHTML = prezzo + '£';
 
   }
 
@@ -45,10 +45,14 @@ buttonAnnulla.addEventListener('click',
     //annullamento nome
     formNome.value = '';
     ticketNome.innerHTML ='';
-  }
     // annullamento km
     formKm.value='';
 
     //annullamento eta
     formEta.value='minorenne';
+
+    // annullamento costo biglietto
+    ticketCosto.innerHTML ='';
+  }
+
 );

@@ -16,3 +16,9 @@ body h2 {
   border: 1px solid white;
   border-radius: 5px;
 }
+#biglietto {
+  background-color: white;
+  margin: 50px;
+  border: 1px solid white;
+  border-radius: 5px;
+}
