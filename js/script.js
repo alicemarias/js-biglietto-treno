@@ -1,24 +1,54 @@
-//chiedo all'utente la sua eta
-var eta = parseInt(prompt('quanti anni hai?'))
+// bottoni FORM
+var buttonGenera = document.getElementById('form-genera');
+var buttonAnnulla = document.getElementById('form-annulla');
+// elementi form
+var formNome = document.getElementById('form-nome');
+var formKm = document.getElementById('form-km');
+var formEta = document.getElementById('form-eta');
 
-// chiedo all'untente quanti km deve viaggiare
-var km = parseInt(prompt('per quanti km dovrai viaggiare?'))
 
-//stabilisco prezzo pieno
-var prezzo = km * 0.21;
+// ELEMENTI BIGLIETTO
+var ticketNome = document.getElementById('ticket-nome');
+var ticketCosto = document.getElementById('ticket-costo');
 
-// prezzo per over 65
-if (eta > 65) {
-  over65 = (prezzo * 40) / 100;
-  document.getElementById('biglietto').innerHTML = over65 + '£';
-}
-// prezzo per minorenni
- else if (eta < 18) {
-  minorenni = (prezzo * 20) / 100;
-  document.getElementById('biglietto').innerHTML = minorenni + '£';
-}
-// prezzo pieno per tutti gli altri 
-else {
-  prezzo = km * 0.21;
-  document.getElementById('biglietto').innerHTML = prezzo + '£';
-}
+//
+var formKmValue;
+var formEtaValue;
+
+//PULSANTE GENERA
+buttonGenera.addEventListener('click',
+  function() {
+    formKmValue = formKm.value;
+    formEtaValue = formEta.value;
+
+    //  compilo elementi ticket
+    ticketNome.innerHTML = formNome.value;
+    // calcolo prezzo
+    var prezzo = formKmValue * 0.21;
+
+    // calcolo sconti
+    if(formEtaValue == 'minorenne') {
+      prezzo = prezzo - ( prezzo * 20 / 100);
+    }  else if (formEtaValue == 'over') {
+      prezzo = prezzo - ( prezzo * 40 / 100);
+    }
+    // calcolo prezzo BIGLIETTO
+    ticketCosto.innerHTML = prezzo + '£';
+
+  }
+
+);
+
+//pulsante annulla
+buttonAnnulla.addEventListener('click',
+  function() {
+    //annullamento nome
+    formNome.value = '';
+    ticketNome.innerHTML ='';
+  }
+    // annullamento km
+    formKm.value='';
+
+    //annullamento eta
+    formEta.value='minorenne';
+);
